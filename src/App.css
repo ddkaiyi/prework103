@@ -1,60 +1,62 @@
 .App {
   text-align: center;
- 
+  color: antiquewhite;
 }
 
 .App-logo {
   height: 40vmin;
   pointer-events: none;
 }
-.middle{
-  
- 
-  width: 600px;
-  height: 500px;
-  background-color: rgba(0, 125, 255, 0.5);
-  margin-top: 50px;
-  margin-left: 400px;
-  margin-right: 400px;
-  text-align: center;
 
-  
-  
-}
 .left{
+  position: fixed;
+  left: 0;
+   height: 700px;
+  width: 20%;
+  background-color:rgba(0,0,0, 0.1);
+  display: block;
+  text-align: center;
+  
+}
+.flo{
+  margin-left: 100px;
+  text-align: center;
+  
+}
+.flo li{
+  height: 180px;
+  width: 240px;
+  margin-left: 40px;
+  background-color:rgba(0,0,0, 0.1);
   display:inline-block;
-  width: 300px;
-
-  background-color: rgba(0, 125, 255, 0.5);
-
-  margin-left: 10px;
-  text-align: center;
-  float: left;
-
-  
 }
-.right{
-
-  width: 300px;
-
-  background-color: rgba(0, 125, 255, 0.5);
-
- 
-  text-align: center;
-  position:absolute;
-  right: 10px;
-  top:20px;
+.main{
+  width: 60%;
+  background-color:rgba(0,0,0, 0.1);
+  min-height: 240px;
+  height: auto;
+  margin-left: 410px;
 
 }
-.choice{
-  background-color: yellow;
-  width: 120px;
-  height: 50px;
- 
-  
-}
-.new{
-  width: 120px;
-  height: 50px;
-}
+.main p{
+  /* color: red; */
+  display:inline-block;
+  padding-right: 160px;
 
+}
+.main h1{
+  display:inline-block;
+  padding-right: 100px;
+}
+.main textarea,button,h5{
+width: 90px;
+height: 20px;
+
+  resize:none;
+
+  display: inline;
+
+}
+.main button{
+  line-height: 10px;
+}

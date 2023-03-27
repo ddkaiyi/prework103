@@ -1,82 +1,77 @@
 import React, { useState, useEffect } from 'react';
 import axios, { Axios } from 'axios';
+import moment from 'moment';
 
 import './App.css';
 
 function App() {
-  // const [datas,setDatas]=useState([])
-  const [CatFact,setCatFact]=useState([])
-  const [Ban,setBan]=useState([])
-  const [now,setNow]=useState("")
+  const [data,Setdata]=useState([]);
+  const[sdate,Setsdate]=useState(null);
+  const[newdata,Setnewdata]=useState(null);
+
   const fetchData=()=>{
-    axios.get("https://api.thedogapi.com/v1/images/search?has_breeds=true&api_key=live_foLUAORVoeWBTHBkMwpCxBF1DQyW1nRg19CQAa0eZVML16jjHOdvI8u0jyZxfx1V").then((res)=>{
-      setCatFact(pre=>[...pre,res.data])
-    setNow(res.data)
+    axios.get("https://api.weatherbit.io/v2.0/forecast/daily?city=newyork&key=140c7c8c5afc490a813c2666df9c4c50").then((res)=>{
+         Setdata(res.data)
     
-    }
-    ).catch(error=>console.error(error))
-  };
-  useEffect(()=>{
-    fetchData();
-
-  },[]);
-  const Bandata=(e)=>{
-setBan(pre=>[...pre,e.target.value])
-  }
-
-console.log( Ban)
-  return(
-    <div >
-      {/* <input placeholder='Ex.Pedro...'
-       onChange={(event)=>{setName(event.target.value)}}
-      ></input> */}
-       <div className="left">
-      {CatFact.map((item) => (
-          <div  key={item[0]?.id}>
-       <h1>{item[0]?.breeds[0]?.name}</h1>
-       <img src={item[0].url} width={200}></img>
-          </div>
-        ))}
-        </div>
-  <div className='middle'>
-   <h1>Trippin' on Dogs</h1>
-
-<h2>Discover cats from your wildest dreams!</h2>
-
-<p>😺😸😹😻😼😽🙀😿😾</p>
-
-<button className='choice'>{now[0]?.breeds[0]?.bred_for
-}</button>
-<button className='choice'onClick={Bandata} value={now[0]?.breeds[0]?.life_span
-
-}>{now[0]?.breeds[0]?.life_span
-
-}</button>
-<button className='choice'>{now[0]?.breeds[0]?.weight.metric
-
-}</button>
-  <h1>{now[0]?.breeds[0]?.name}</h1>
-       <img src={now[0]?.url} width={200}></img>
-
-       <button className='new' onClick={fetchData}>🔀 Discover!</button>
-  </div>
- 
-    
+    })}
+    useEffect(()=>{
+      fetchData();
   
-{/* <button >Predict Age</button> */}
-<div className='right'>
+    },[]);
+//     Setdata1(data.data)
+// console.log(data.data)
+const search=()=>{
+  Setnewdata(data.data?.filter((item)=>item.datetime== sdate));
+  console.log(sdate)
+  console.log(newdata);
+}
+// console.log(newdata?"a":"b")
+const reload= ()=>
+{
+    window.location.reload();
+}
+const date=Date(data?.data?.[0]?.moonrise_ts * 1000);
 
-<h1>Ban list</h1>
-
-{Ban.filter((item)=>item).map((item)=>(
- <div  key={item}>
-<button>{item}</button>
+  return(<div className='App'>
+    <div className='left'> 
+    <h1 onClick={reload}>AstroDash</h1>
+    <h2>Dashboard</h2>
+    <h2>Search</h2>
+    <h2>About</h2>
     </div>
-))}
-</div>
-</div>
+    <div className='right'>
+      <div className='flo'>
+        <ul>
+          <li><h1>New York
 
-  )
+</h1><h2>New York, USA</h2></li>
+          <li><h1>{moment(data?.data?.[0]?.moonrise_ts * 1000).format('hh:mm:ss')}</h1><h2>moon rise</h2></li>
+          <li><h1>{data?.data?.[0]?.moon_phase<0.5?"🌒":"🌔"}</h1><h2>Moon Pharse</h2></li>
+        </ul>
+      </div>
+      <div className='main'>
+    
+        <h5>Date search:</h5><textarea placeholder='Enter data...' onChange={(e)=>{Setsdate(e.target.value)} } /><button onClick={search}>Search</button>
+       <ul>
+        <h1>Date</h1> <h1>Temperature</h1><h1>Time</h1><h1>pharse</h1>
+        {newdata?newdata.map((item)=>(
+  <div>
+ <p>{item.datetime}</p><p>{item.temp}</p><p>{
+moment(item.ts* 1000).format('hh:mm:ss') }</p><p>{item.moon_phase < 0.5?"🌒":"🌔"}</p></div>
+)):
+
+data.data?.map((item)=>(
+  <div>
+ <p>{item.datetime}</p><p>{item.temp}</p><p>{
+moment(item.ts* 1000).format('hh:mm:ss') }</p><p>{item.moon_phase < 0.5?"🌒":"🌔"}</p></div>
+))
+}</ul>
+
+      </div>
+    </div>
+  </div>)
+
+
 }
 
 export default App;
