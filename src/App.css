@@ -25,28 +25,29 @@
 }
 .flo li{
   height: 180px;
-  width: 240px;
-  margin-left: 40px;
+  width: 300px;
+  margin-left: 20px;
   background-color:rgba(0,0,0, 0.1);
   display:inline-block;
 }
 .main{
-  width: 60%;
+  width: 40%;
   background-color:rgba(0,0,0, 0.1);
   min-height: 240px;
   height: auto;
-  margin-left: 410px;
+  margin-left: 290px;
 
 }
 .main p{
   /* color: red; */
   display:inline-block;
-  padding-right: 160px;
+  padding-right: 60px;
+  font-size: 12px;
 
 }
-.main h1{
+.main h4{
   display:inline-block;
-  padding-right: 100px;
+  padding-right: 32px;
 }
 .main textarea,button,h5{
 width: 90px;
@@ -59,4 +60,22 @@ height: 20px;
 }
 .main button{
   line-height: 10px;
+}
+.table1{
+  width: 320px;
+  height: 300px;
+  position:absolute;
+  top:220px;
+  right:120px;
+  /* background-color: aqua; */
+  background-color:rgba(0,0,0, 0.1);
+}
+.table2{
+  width: 320px;
+  height: 300px;
+  position:absolute;
+  top:600px;
+  right:120px;
+  /* background-color: red; */
+  background-color:rgba(0,0,0, 0.1);
 }

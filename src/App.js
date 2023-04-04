@@ -1,7 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import axios, { Axios } from 'axios';
 import moment from 'moment';
+import { BarChart, Bar,  LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
+import { BrowserRouter as Router,Routes,Route, Link } from 'react-router-dom';
 
+import{Contact} from "./pages/Contact"
+import{Content} from "./pages/Content"
 import './App.css';
 
 function App() {
@@ -19,7 +23,7 @@ function App() {
   
     },[]);
 //     Setdata1(data.data)
-// console.log(data.data)
+console.log(data.data)
 const search=()=>{
   Setnewdata(data.data?.filter((item)=>item.datetime== sdate));
   console.log(sdate)
@@ -32,43 +36,23 @@ const reload= ()=>
 }
 const date=Date(data?.data?.[0]?.moonrise_ts * 1000);
 
-  return(<div className='App'>
-    <div className='left'> 
-    <h1 onClick={reload}>AstroDash</h1>
-    <h2>Dashboard</h2>
-    <h2>Search</h2>
-    <h2>About</h2>
-    </div>
-    <div className='right'>
-      <div className='flo'>
-        <ul>
-          <li><h1>New York
-
-</h1><h2>New York, USA</h2></li>
-          <li><h1>{moment(data?.data?.[0]?.moonrise_ts * 1000).format('hh:mm:ss')}</h1><h2>moon rise</h2></li>
-          <li><h1>{data?.data?.[0]?.moon_phase<0.5?"🌒":"🌔"}</h1><h2>Moon Pharse</h2></li>
-        </ul>
-      </div>
-      <div className='main'>
+  return(
     
-        <h5>Date search:</h5><textarea placeholder='Enter data...' onChange={(e)=>{Setsdate(e.target.value)} } /><button onClick={search}>Search</button>
-       <ul>
-        <h1>Date</h1> <h1>Temperature</h1><h1>Time</h1><h1>pharse</h1>
-        {newdata?newdata.map((item)=>(
-  <div>
- <p>{item.datetime}</p><p>{item.temp}</p><p>{
-moment(item.ts* 1000).format('hh:mm:ss') }</p><p>{item.moon_phase < 0.5?"🌒":"🌔"}</p></div>
-)):
+  <div className='App'>
+     <Router>
+      <div>
+     {/* <Link to="/home/1">Home</Link> */}
+     {/* <Link to="/">page</Link> */}
+     </div>
+      <Routes>
+      
+      <Route path="/home/:id" element={<Contact/>} />
+      <Route path="/" element={<Content/>} />
+      </Routes>
+   
+    </Router>
 
-data.data?.map((item)=>(
-  <div>
- <p>{item.datetime}</p><p>{item.temp}</p><p>{
-moment(item.ts* 1000).format('hh:mm:ss') }</p><p>{item.moon_phase < 0.5?"🌒":"🌔"}</p></div>
-))
-}</ul>
 
-      </div>
-    </div>
   </div>)
 
 
