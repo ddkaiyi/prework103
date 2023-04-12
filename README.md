@@ -23,7 +23,7 @@ The following **required** functionality is completed:
 
 Here's a walkthrough of implemented features:
 
-<img src='https://github.com/ddkaiyi/homework3/blob/master/z6w9q-4rkls.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='https://github.com/ddkaiyi/homework7/blob/master/j2qya-wuh96.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
 <!-- Replace this with whatever GIF tool you used! -->
 GIF created with ...  
