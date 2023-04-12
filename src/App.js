@@ -1,56 +1,50 @@
 import React, { useState, useEffect } from 'react';
-import axios, { Axios } from 'axios';
-import moment from 'moment';
-import { BarChart, Bar,  LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
+
+import { supabase } from './client'
 import { BrowserRouter as Router,Routes,Route, Link } from 'react-router-dom';
-
-import{Contact} from "./pages/Contact"
-import{Content} from "./pages/Content"
 import './App.css';
-
+import{Show} from "./pages/show"
+import{Insert} from "./pages/insert"
+import{Content2} from "./pages/content2"
+import{Update} from "./pages/Update"
+import{Home} from "./pages/Home"
 function App() {
-  const [data,Setdata]=useState([]);
-  const[sdate,Setsdate]=useState(null);
-  const[newdata,Setnewdata]=useState(null);
+ 
 
-  const fetchData=()=>{
-    axios.get("https://api.weatherbit.io/v2.0/forecast/daily?city=newyork&key=140c7c8c5afc490a813c2666df9c4c50").then((res)=>{
-         Setdata(res.data)
-    
-    })}
-    useEffect(()=>{
-      fetchData();
-  
-    },[]);
-//     Setdata1(data.data)
-console.log(data.data)
-const search=()=>{
-  Setnewdata(data.data?.filter((item)=>item.datetime== sdate));
-  console.log(sdate)
-  console.log(newdata);
-}
-// console.log(newdata?"a":"b")
-const reload= ()=>
-{
-    window.location.reload();
-}
-const date=Date(data?.data?.[0]?.moonrise_ts * 1000);
+  const reload= ()=>
+  {
+      window.location.reload();
+  }
+
+
+
 
   return(
     
-  <div className='App'>
-     <Router>
+  <div className='App' >
+    
+         <Router>
       <div>
-     {/* <Link to="/home/1">Home</Link> */}
-     {/* <Link to="/">page</Link> */}
+      <div className='left'> 
+        <h1 onClick={reload}> <Link to="/">Home</Link></h1>
+        <h2> <Link to="/insert">Create Crewmate</Link> </h2>
+       <h2><Link to="/show"> Crewmate Gallery</Link></h2> 
+    
+        </div>
+  
      </div>
       <Routes>
       
-      <Route path="/home/:id" element={<Contact/>} />
-      <Route path="/" element={<Content/>} />
+
+      <Route path="/show" element={<Show/>} />
+      <Route path="/insert" element={<Insert/>} />
+      <Route path="/home/:id" element={<Content2/>} />
+      <Route path="/update/:id" element={<Update/>} />
+      <Route path="/" element={<Home/>} />
       </Routes>
    
     </Router>
+
 
 
   </div>)
