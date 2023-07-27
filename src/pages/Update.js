@@ -9,7 +9,7 @@ export const Update=()=>{
     const [formData, setFormData] = useState({});
     const fetchPosts=async () => {  
         const {data}= await supabase
-      .from('Crewmate')
+      .from('Creators')
       .select("*")
       .eq('id',id)
      
@@ -18,8 +18,8 @@ export const Update=()=>{
     const UpdatePost = async (data) => {  
         // event.preventDefault();
         await supabase
-        .from('Crewmate')
-        .update({name: data.name, speed: data.speed, color: data.color})
+        .from('Creators')
+        .update({name: data.name, Image: data.Image,Description:data.Description, YouTube: data.YouTube})
         .eq('id',id)
         fetchPosts();
         alert("Update successfully!")
@@ -44,18 +44,16 @@ export const Update=()=>{
                 <label htmlFor="name">Name:{ posts?.[0]?.name}</label> <br />
                 <input type="text" id="name" name="name"  {...register('name')}/><br />
                 <br/>
-
-                <label htmlFor="speed">Speed:{posts?.[0]?.speed}</label><br />
-                <input type="text" id="speed" name="speed" {...register('speed')}/><br />
+                <label htmlFor="Image">Image:{ posts?.[0]?.Image}</label> <br />
+                <input type="text" id="Image" name="Image"  {...register('Image')}/><br />
                 <br/>
-
-                <label htmlFor="color">Color:{posts?.[0]?.color}</label><br />
-               
-                  <p >
-                    Red<input type="radio" name="color" value="red"{...register('color')}/>
-                    Blue<input type="radio" name="color" value="blue"{...register('color')}/>
-                    Green<input type="radio" name="color" value="green"{...register('color')}/>
-                  </p>
+                <label htmlFor="Description">Description:{posts?.[0]?.Description}</label><br />
+                <input type="text" id="Description" name="Description" {...register('Description')}/><br />
+                <br/>
+                <label htmlFor="YouTube">YouTube:{posts?.[0]?.YouTube}</label><br />
+                <input type="text" id="YouTube" name="YouTube" {...register('YouTube')}/><br />
+                <br/>
+          
              
                 <br/>
                 <input type="submit" value="Submit" />

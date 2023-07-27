@@ -27,8 +27,8 @@ function App() {
       <div>
       <div className='left'> 
         <h1 onClick={reload}> <Link to="/">Home</Link></h1>
-        <h2> <Link to="/insert">Create Crewmate</Link> </h2>
-       <h2><Link to="/show"> Crewmate Gallery</Link></h2> 
+        <h2> <Link to="/insert">Create Creator</Link> </h2>
+       <h2><Link to="/show"> Creators Gallery</Link></h2> 
     
         </div>
   

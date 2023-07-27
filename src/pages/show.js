@@ -1,21 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate,useParams } from 'react-router-dom';
 import { supabase } from '../client'
+import Img from "./youtube.png"
 export const Show=()=>{
     let navigate=useNavigate();
     const [posts, setPosts] = useState([]);
     const fetchPosts=async () => {  
         const {data}= await supabase
-      .from('Crewmate')
+      .from('Creators')
       .select('*')
       setPosts(data)
       }
-    const deletepost=async (id) => {  
-        const {data}= await supabase
-      .from('Crewmate')
-      .delete()
-      .eq('id',id)
-      }
+
       useEffect(()=>{
         fetchPosts();
     
@@ -24,21 +20,23 @@ export const Show=()=>{
 
       return(
         <div className='show' >
-{posts.map((post)=>(
+{ posts!== null?posts.map((post)=>(
   <div className='all'>
-    <div className='float'style={{boxShadow: `10px 10px  ${post.color}`}}>
+   
+    <div className='float'style={{ backgroundImage:`url(${post.Image})`, float:'left'}}>
 <p>Name: {post.name}</p>
-<p>Speed: {post.speed} KM</p>
-<p > Color:{post.color}</p>
+{post.YouTube?
+  <a href={`https://www.youtube.com/@${post.YouTube}`}>
+<img src={Img} style={{width:"20px"}} ></img></a>:null}
+<p > {post.Description}</p>
 <button onClick={()=>{navigate(`/home/${post.id}`)}}>Detail</button>
-<button onClick={()=>{navigate(`/update/${post.id}`)}}>Update</button>
-<button onClick={()=>{deletepost(post.id) ;window.location.reload()}}>Delete</button>
+
 </div>
 </div>
 )
 
 
-)}
+):null}
         </div>
       )
 }
