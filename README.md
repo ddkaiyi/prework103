@@ -1,10 +1,10 @@
-# WEB103 Prework - *👉🏿 Name of App Here*
+# WEB103 Prework - *Creators*
 
-Submitted by: **👉🏿 your name here**
+Submitted by: **Kaiyi Dai**
 
-About this web app: **👉🏿 app description here**
+About this web app: ** It has showed the creators and their name,description and youtube channel**
 
-Time spent: **👉🏿 X** hours
+Time spent: **10** hours
 
 ## Required Features
 
@@ -35,7 +35,7 @@ The following **additional** features are implemented:
 
 Here's a walkthrough of implemented required features:
 
-👉🏿<img src='http://i.imgur.com/link/to/your/gif/file.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+👉🏿<img src='https://github.com/ddkaiyi/prework103/blob/master/src/zykx1-p6ats.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
 <!-- Replace this with whatever GIF tool you used! -->
 GIF created with ...  👉🏿 GIF tool here
@@ -50,7 +50,7 @@ Describe any challenges encountered while building the app or any additional con
 
 ## License
 
-Copyright [👉🏿 yyyy] [👉🏿 name of copyright owner]
+Copyright [2023] [Kaiyi Dai]
 
 Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at
 
